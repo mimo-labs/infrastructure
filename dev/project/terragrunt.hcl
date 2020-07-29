@@ -6,9 +6,11 @@ terraform {
   source = "git::git@github.com:mimo-mocks/terraform-modules.git//project?ref=master"
 }
 
-inputs = merge(
-  local.env_variables.locals,
-  {
-    project_name = "Mimo"
-  }
-)
+include {
+  path = find_in_parent_folders()
+}
+
+inputs = {
+  project_name = "Mimo"
+  external_domain_name = "mime.rocks"
+}

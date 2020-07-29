@@ -23,16 +23,17 @@ dependency "project" {
   }
 }
 
-inputs = merge(
-  local.env_variables.locals,
-  {
-    droplet_name  = "mimo-app"
-    image_name = "apiserver-1595819694"
-    size  = "s-1vcpu-1gb"
-    ssh_keys = [22442613]
+include {
+  path = find_in_parent_folders()
+}
 
-    project_name = dependency.project.outputs.project_id
-    domain_name  = dependency.project.outputs.internal_domain_name
-    vpc_id       = dependency.vpc.outputs.vpc_id
-  }
-)
+inputs = {
+  droplet_name  = "mimo-app"
+  image_name = "apiserver-1595819694"
+  size  = "s-1vcpu-1gb"
+  ssh_keys = [22442613]
+
+  project_name = dependency.project.outputs.project_id
+  domain_name  = dependency.project.outputs.internal_domain_name
+  vpc_id       = dependency.vpc.outputs.vpc_id
+}

@@ -14,12 +14,13 @@ dependency "project" {
   }
 }
 
-inputs = merge(
-  local.env_variables.locals,
-  {
-    vpc_name = "mimo-dev"
-    ip_range = "10.0.5.0/24"
+include {
+  path = find_in_parent_folders()
+}
 
-    project_id = dependency.project.outputs.project_id
-  }
-)
+inputs = {
+  vpc_name = "mimo-dev"
+  ip_range = "10.0.5.0/24"
+
+  project_id = dependency.project.outputs.project_id
+}
