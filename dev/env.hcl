@@ -1,4 +1,4 @@
 locals {
-  region = "nyc3"
+  region      = "nyc3"
   environment = "development"
 }

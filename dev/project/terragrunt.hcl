@@ -11,6 +11,6 @@ include {
 }
 
 inputs = {
-  project_name = "Mimo"
+  project_name         = "Mimo"
   external_domain_name = "mime.rocks"
 }
